@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover student projects and showcase your work.">
+    <title>ProjectHub | Student Project Showcase</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="#">ProjectHub<span>.</span></a>
+        <nav aria-label="Main navigation">
+            <a href="#gallery">Explore Projects</a>
+            <a href="#submit">Submit Project</a>
+            <a href="#admin">Admin</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">STUDENT PROJECT COMMUNITY</p>
+            <h1>Ideas deserve to be <span>showcased.</span></h1>
+            <p>Discover student creativity, explore innovative projects, and share what you've built.</p>
+            <a class="button primary" href="#gallery">Explore projects</a>
+            <a class="button secondary" href="#submit">Share your project</a>
+        </section>
+
+        <section class="section" id="gallery">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE COMMUNITY</p>
+                    <h2>Explore projects</h2>
+                    <p>Discover work submitted by fellow students.</p>
+                </div>
+                <span id="projectCount" class="count">0 projects</span>
+            </div>
+
+            <div class="filters">
+                <label class="sr-only" for="searchInput">Search projects</label>
+                <input id="searchInput" type="search" placeholder="Search projects or students...">
+
+                <label class="sr-only" for="tagFilter">Filter by tag</label>
+                <select id="tagFilter">
+                    <option value="">All tags</option>
+                </select>
+            </div>
+
+            <p id="galleryMessage" class="message" role="status">Loading approved projects...</p>
+            <div id="projectGrid" class="project-grid"></div>
+        </section>
+
+        <section class="section submit-section" id="submit">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR TURN</p>
+                    <h2>Submit your project</h2>
+                    <p>Share your work with the student community.</p>
+                </div>
+            </div>
+
+            <form id="projectForm" class="form-card">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="title">Project title *</label>
+                        <input id="title" name="title" required maxlength="120" placeholder="e.g. Smart Campus App">
+                    </div>
+
+                    <div class="field">
+                        <label for="student_name">Student name *</label>
+                        <input id="student_name" name="student_name" required maxlength="100"
+                            placeholder="Your full name">
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="description">Project description *</label>
+                        <textarea id="description" name="description" required maxlength="2000" rows="4"
+                            placeholder="What does your project do?"></textarea>
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="tags">Tags *</label>
+                        <input id="tags" name="tags" required maxlength="250"
+                            placeholder="e.g. JavaScript, AI, Web Development">
+                        <small>Separate multiple tags with commas.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="github_url">GitHub repository URL *</label>
+                        <input id="github_url" name="github_url" type="url" required
+                            placeholder="https://github.com/username/project">
+                    </div>
+
+                    <div class="field">
+                        <label for="demo_url">Live preview URL *</label>
+                        <input id="demo_url" name="demo_url" type="url" required
+                            placeholder="https://your-project.example">
+                    </div>
+                </div>
+
+                <button class="button primary" type="submit" id="submitButton">
+                    Submit for review
+                </button>
+                <p id="submitMessage" class="message" role="status" aria-live="polite"></p>
+                <p class="form-note">Your project stays private from the public gallery until an admin approves it.</p>
+            </form>
+        </section>
+
+        <section class="section admin-section" id="admin">
+            <p class="eyebrow">DESIGNATED ADMINS</p>
+            <h2>Project moderation</h2>
+            <p>Admins can sign in to review submissions and approve or reject projects.</p>
+
+            <form id="adminLoginForm" class="form-card admin-login">
+                <div class="field">
+                    <label for="adminUsername">Admin username</label>
+                    <input id="adminUsername" name="username" autocomplete="username" required>
+                </div>
+                <div class="field">
+                    <label for="adminPassword">Admin password</label>
+                    <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="button primary" type="submit">Admin sign in</button>
+                <p id="adminLoginMessage" class="message" role="status"></p>
+            </form>
+
+            <div id="adminPanel" hidden>
+                <div class="admin-toolbar">
+                    <label for="statusFilter">Filter submissions</label>
+                    <select id="statusFilter">
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="">All submissions</option>
+                    </select>
+                    <button class="button secondary" id="logoutButton" type="button">Log out</button>
+                </div>
+                <p id="adminMessage" class="message" role="status"></p>
+                <div id="adminProjectList" class="admin-project-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a class="brand" href="#">ProjectHub<span>.</span></a>
+        <p>Built to celebrate student creativity.</p>
+    </footer>
+</body>
+
+</html>
